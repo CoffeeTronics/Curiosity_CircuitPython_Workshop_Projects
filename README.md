@@ -16,7 +16,7 @@ They then write those to the TFT display using colored labels that are triggered
 thresholds themselves. Students then write to the 4 NeoPixels on the PyKit Ruler baseboard, with each NeoPixel corresponding
 to a given measurement.
 
-### Project 3:APDS9960 Proximity/Gesture/Color
+### Project 3: APDS9960 Proximity/Gesture/Color
 In this project the students utilize a state machine to switch between the 3 measurements (Proximity/Gesture/Color). In Proximity state, the students will output a tone via the DAC that is inversely 
 proportional to the measured distance. 
 In Gesture state, four Gestures are supported: Up, Down. Left, Right. Students will map a WAV file to each gesture.
