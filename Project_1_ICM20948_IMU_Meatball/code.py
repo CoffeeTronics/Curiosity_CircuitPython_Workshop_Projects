@@ -125,23 +125,25 @@ display.root_group = group
 # Set sprite initial location
 if Debug:
     print("Set Sprite Initial Location")
-group.x = 150
-group.y = 70
-
-X_pos = 150
-Y_pos = 70
+# Set sprite initial location to the center of the display
+group.x = int((DISPLAY_WIDTH / 2) - (LOGO_WIDTH / 2))
+group.y = int((DISPLAY_HEIGHT / 2) - (LOGO_HEIGHT / 2)) #70
+# Set IMU initial location to the center of the display
+X_pos = group.x
+Y_pos = group.y
 
 # User to adjust drift values to keep Meatball stable when on flat level surface
 drift_X = 0.0
 drift_Y = 0.0
 
 while True:
+    # Links to Adafruit example and documentation:
     # https://learn.adafruit.com/adafruit-tdk-invensense-icm-20948-9-dof-imu/python-circuitpython  
     # Read the Docs: https://docs.circuitpython.org/projects/icm20x/en/latest/api.html
 
     # Task: Decide whether to use accelerometer or gyroscope data from IMU
     # Task: Get X,Y,Z data from IMU
-
+    # Your code here:
     # Print IMU data as sanity check
     if Debug:
         print("X: {:.2f}".format(X))
@@ -150,14 +152,19 @@ while True:
         print("")
 
     # Task: Display has only 2 axes, but IMU has 3 (X,Y,Z): decide which 2 to use!
+    
     # Task: IMU data is of type float. Display position uses type int. Cast float to int.
+    # Your code here: Cast IMU float data to int for LCD display coordinates.
+    
     # Task: Move Meatball according to IMU data & drift_X / drift_Y adjustments.
-
     # Your code here: Set X_position (X_pos) using the IMU data and drift_X variables
     # Your code here: Set Y_position (Y_pos) using the IMU data and drift_Y variables
 
     # Task: Figure out how to stop Meatball from drifting off screen
-    if X_pos >= DISPLAY_WIDTH - LOGO_WIDTH:     
+    # Note: In CircuitPython the coordinate (0,0) for a sprite is the top left corner
+    #       Horizontal (x) axis increases to the right.
+    #       Vertical (y) axis increases downward.
+    if X_pos >= DISPLAY_WIDTH - LOGO_WIDTH:     # if logo/sprite starts to move off display in positive x-axis
         # Your code here to prevent Meatball from moving off display in positive X-axis. 
         # Use group.x to set Meatball position in X-axis
         # Don't forget to update X_pos variable as well!
@@ -165,7 +172,7 @@ while True:
     else:
         group.x = X_pos                 
 
-    if X_pos <= 0:                      
+    if X_pos <= 0:  # if logo/sprite starts to move off display in negative x-axis                       
         # Your code here to prevent Meatball from moving off display in negative X-axis.
         # Use group.x to set Meatball position in X-axis
         # Don't forget to update X_pos variable as well!
@@ -173,7 +180,7 @@ while True:
     else:           
         group.x = X_pos                 
 
-    if Y_pos >= DISPLAY_HEIGHT - LOGO_HEIGHT:   
+    if Y_pos >= DISPLAY_HEIGHT - LOGO_HEIGHT:   # if logo/sprite starts to move off display in positive y-axis
         # Your code here to prevent Meatball from moving off display in positive Y-axis
         # Use group.y to set Meatball position in Y-axis
         # Don't forget to update Y_pos variable as well!
@@ -181,7 +188,7 @@ while True:
     else:
         group.y = Y_pos
 
-    if Y_pos <= 0:
+    if Y_pos <= 0:      # if logo/sprite starts to move off display in negative y-axis
         # Your code here to prevent Meatball from moving off display in negative Y-axis
         # Use group.x to set Meatball position in X-axis
         # Don't forget to update X_pos variable as well!
