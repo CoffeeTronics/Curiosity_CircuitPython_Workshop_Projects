@@ -13,7 +13,7 @@ on the display.
 ### Project 2: BME680 Temperature/Humidity/Pressure/Gas
 In this project the students read from the BME680 sensor 4 measurements: Temperature, Humidity, Barometric Pressure, and Gas. 
 They then write those to the TFT display using colored labels that are triggered by thresholds. Students have to decide on the 
-thresholds themselves. Students then write to the 4 NeoPixels on the PyKit Ruler baseboard, with eaxch NeoPixel corresponding
+thresholds themselves. Students then write to the 4 NeoPixels on the PyKit Ruler baseboard, with each NeoPixel corresponding
 to a given measurement.
 
 ### Project 3:APDS9960 Proximity/Gesture/Color
