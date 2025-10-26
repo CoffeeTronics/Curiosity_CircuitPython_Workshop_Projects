@@ -59,7 +59,8 @@ pixels.show()
 # Your code here:
 CONST_ELEVATION = 
 
-# Task: Set temperature thresholds for your comfort level using constants
+# Task: Set temperature thresholds for your comfort level using constants.
+# NOTE: Temperatures are set in degrees Celcius!
 # Your code here:
 CONST_TEMP_LOW = 
 CONST_TEMP_MED = 
@@ -72,6 +73,7 @@ CONST_HUMID_MED =
 CONST_HUMID_HI = 
 
 # Task: Set barometric pressure thresholds using constants
+# NOTE: Pressure is set in milliBar (mB) !
 # Your code here:
 CONST_PRESS_LOW =   # Low pressure
 CONST_PRESS_MED =   # Standard pressure
