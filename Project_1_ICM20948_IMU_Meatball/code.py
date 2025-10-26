@@ -6,7 +6,7 @@ background, a Microchip "Meatball" logo, and move the logo around the screen fro
 Workshop attendees' tasks:
     Determine whether to use accelerometer or gyroscope
     Read X,Y,Z from IMU
-    Determine which 2 IMU values to use
+    Decide which 2 IMU values to use
     Cast IMU float output to int for display coordinates
     Move Meatball according to IMU measurements
     Adjust X & Y Drift variables to keep Meatball stable when Ruler is on a flat level surface
@@ -142,8 +142,9 @@ while True:
     # Read the Docs: https://docs.circuitpython.org/projects/icm20x/en/latest/api.html
 
     # Task: Decide whether to use accelerometer or gyroscope data from IMU
-    # Task: Get X,Y,Z data from IMU
+    # Task: Get X,Y,Z data from IMU (IMU data is type float)
     # Your code here:
+    X,Y,Z = 
     # Print IMU data as sanity check
     if Debug:
         print("X: {:.2f}".format(X))
@@ -152,15 +153,18 @@ while True:
         print("")
 
     # Task: Display has only 2 axes, but IMU has 3 (X,Y,Z): decide which 2 to use!
-    
-    # Task: IMU data is of type float. Display position uses type int. Cast float to int.
-    # Your code here: Cast IMU float data to int for LCD display coordinates.
-    
+    # Task: IMU data is of type float. Display position (X_pos, Y_pos) uses type int. Cast float to int.
     # Task: Move Meatball according to IMU data & drift_X / drift_Y adjustments.
-    # Your code here: Set X_position (X_pos) using the IMU data and drift_X variables
-    # Your code here: Set Y_position (Y_pos) using the IMU data and drift_Y variables
+    
+    # Your code here: Cast IMU float data to int for LCD display coordinates.
+    # Your code here: Set X_position (X_pos) using the IMU data (X) and drift_X variables
+    # Your code here: Set Y_position (Y_pos) using the IMU data (Y) and drift_Y variables
+    # All 3 tasks for X_pos can be done in 1 line of code
+    # All 3 tasks for Y_pos can be done in 1 line of code
+    X_pos
+    Y_pos
 
-    # Task: Figure out how to stop Meatball from drifting off screen
+    # Task: Figure out how to stop Meatball from drifting off screen!
     # Note: In CircuitPython the coordinate (0,0) for a sprite is the top left corner
     #       Horizontal (x) axis increases to the right.
     #       Vertical (y) axis increases downward.
@@ -168,7 +172,8 @@ while True:
         # Your code here to prevent Meatball from moving off display in positive X-axis. 
         # Use group.x to set Meatball position in X-axis
         # Don't forget to update X_pos variable as well!
-
+        group.x = 
+        X_pos = 
     else:
         group.x = X_pos                 
 
@@ -176,7 +181,8 @@ while True:
         # Your code here to prevent Meatball from moving off display in negative X-axis.
         # Use group.x to set Meatball position in X-axis
         # Don't forget to update X_pos variable as well!
-                     
+        group.x = 
+        X_pos =             
     else:           
         group.x = X_pos                 
 
@@ -184,7 +190,8 @@ while True:
         # Your code here to prevent Meatball from moving off display in positive Y-axis
         # Use group.y to set Meatball position in Y-axis
         # Don't forget to update Y_pos variable as well!
-
+        group.y = 
+        Y_pos =
     else:
         group.y = Y_pos
 
@@ -192,14 +199,15 @@ while True:
         # Your code here to prevent Meatball from moving off display in negative Y-axis
         # Use group.x to set Meatball position in X-axis
         # Don't forget to update X_pos variable as well!
-        group.y = 0
-        Y_pos = 0
+        group.y = 
+        Y_pos = 
     else:
         group.y = Y_pos
 
     # Adjust this for Meatball responsiveness to IMU
     # Smaller time = Meatball more responsive to movement
     time.sleep(0.02)
+
 
 
 
