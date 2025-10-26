@@ -43,6 +43,7 @@ NEOPIXEL_GREEN = (0, 255, 0)
 NEOPIXEL_BLUE = (0, 0, 255)
 NEOPIXEL_ORANGE = (255, 64, 0)
 NEOPIXEL_OFF = (0, 0, 0)
+# Add any other colors you would like to use
 
 pixel_pin = board.NEOPIXEL
 # There are 5 NeoPixels total: 1 on the dev board and 4 on the ruler
@@ -75,13 +76,13 @@ CONST_HUMID_HI =
 # Task: Set barometric pressure thresholds using constants
 # NOTE: Pressure is set in milliBar (mB) !
 # Your code here:
-CONST_PRESS_LOW =   # Low pressure
-CONST_PRESS_MED =   # Standard pressure
-CONST_PRESS_HI =    # High pressure
+CONST_PRESS_LOW =      # Low pressure
+CONST_PRESS_MED =      # Standard pressure
+CONST_PRESS_HI =       # High pressure
 
 # Task: Set Gas thresholds
 # High resistance (Ohms) indicates better air quality - adjust for your comfort & location using constants
-# Note: Gas measurements can range from a few thousand to over 100,000
+# Note: Gas measurements can range from a few thousand to over 100,000. This measurment has NO units.
 # Your code here:
 CONST_GAS_LOW = 
 CONST_GAS_MED = 
@@ -192,7 +193,7 @@ while True:
     # Pressure sensors return absolute pressure. However atmospheric
     # pressure changes with elevation. In weather reports, the pressure
     # is adjusted to an equivalent seal level pressure. This is so that 
-    # pressure's in different palces can be directly compared.
+    # pressure's in different places can be directly compared.
 
     # Task: Adjust sensor pressure reading for our elevation according
     # to the international Standard Atmosphere
@@ -202,9 +203,9 @@ while True:
     # in accordance with the international Standard Atmosphere.
     # The equation is: P0 = P1 (1 - (0.0065h/ (T + 0.0065h + 273.15))^(-5.257)
     # where:   P0 = calculated mean sea level pressure (hPa)
-    # P1 = actual measured pressure (hPa or mB)
-    # h = elevation (metres)
-    # T = temp is degrees C
+    # P1 = actual measured pressure (hectoPascals [hPa] or milliBar [mB])
+    # h = elevation of your location (metres)
+    # T = temp is degrees Celcius
 
     # Task: Get the temperature from the BME680
     # Hint: See Adafruit's documentation: https://learn.adafruit.com/adafruit-bme680-humidity-temperature-barometic-pressure-voc-gas/python-circuitpython
@@ -212,7 +213,8 @@ while True:
     # Your code here:
     temp = 
 
-    # Task: Now you need to adjust the pressure reading for your Elevation. First calculate the mantissa.
+    # Task: Now you need to adjust the pressure reading for your Elevation. The equation (see line 204) consists of a Mantissa raised to a Power.
+    # First calculate the mantissa.
     # Your code here:
     mantissa =
     
