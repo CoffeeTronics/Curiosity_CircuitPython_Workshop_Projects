@@ -4,13 +4,16 @@ This project will initialize the display using displayio and draw a solid black
 background, a Microchip "Meatball" logo, and move the logo around the screen from the IMU data.
 
 Workshop attendees' tasks:
-    Determine whether to use accelerometer or gyroscope
-    Read X,Y,Z from IMU
-    Decide which 2 IMU values to use
-    Cast IMU float output to int for display coordinates
-    Move Meatball according to IMU measurements
-    Adjust X & Y Drift variables to keep Meatball stable when Ruler is on a flat level surface
-    Figure out how to keep Meatball within confines of display
+    - Determine whether to use accelerometer or gyroscope
+    - Read X,Y,Z from IMU
+    - Decide which 2 IMU values to use
+    - Cast IMU float output to int for display coordinates
+    - Move Meatball according to IMU measurements
+    - Adjust X & Y Drift variables to keep Meatball stable when Ruler is on a flat level surface
+    - Figure out how to keep Meatball within confines of display
+
+You will see "Task:" then the definition of the task.
+Place your code where you see "Your code here:"
 """
 import time
 import board
@@ -207,6 +210,7 @@ while True:
     # Adjust this for Meatball responsiveness to IMU
     # Smaller time = Meatball more responsive to movement
     time.sleep(0.02)
+
 
 
 
