@@ -10,6 +10,20 @@ When in the Gesture function, 4 gestures are supported by the device: Up, Down, 
 so that the WAV file is played when that gesture is detected.
 When in the Color function, the sensor reads the RGB makeup of objects placed close to it. The display prints the RGB components, and
 the NeoPixels reproduce the color sensed.  
+
+Workshop attendees' tasks:
+   - Decide on a starting state for the Cap Touch FSM (Finite State Machine)
+   - Determine the starting state for each sub-project (proximity, gesture, color) based on documentation
+   - Set RGB text label colors 
+   - Write a function that converts an 8-bit value (proximity sensor) to a 10-bit value (DAC)
+   - Read Cap Touch pad state and perform conditional branching (if-statement)
+   - Read Gesture from APDS9960 sensor
+   - Set text label colors
+   - Combine 3 values from RGB color sensor into 1 value to write to NeoPixels
+
+You will see "Task:" then the definition of the task.
+Place your code where you see "Your code here:"
+"""
 '''
 
 import time
@@ -58,12 +72,13 @@ PROX_THEREMIN_STATE = 2
 COLOR_STATE = 3
 
 # Set initial state for demos
-# Task: Decide on a starting state
+# Task: Decide on a starting state from the 3 states above (lines 65-67)
 # Your code here:
-demo_state = GESTURE_WAV_STATE
+demo_state =    # Your code here
 
 # Booleans used to run each demo after cap touch button press
 # Task: Figure out the starting state for all demos 
+# Use your above starting state and refer to ReadTheDocs: https://docs.circuitpython.org/projects/apds9960
 runGestureDemo =    # Your code here
 runProxDemo =       # Your code here
 runColorDemo =      # Your code here
@@ -130,12 +145,12 @@ display_bus = FourWire(spi, command=tft_dc, chip_select=tft_cs)
 display = ST7789(display_bus, rotation=90, width=DISPLAY_WIDTH, height=DISPLAY_HEIGHT,
                  rowstart=40, colstart=53)
 
-# Task: Set text label colors - display uses 8-bit values for RGB: 0xRRGGBB or (RR, GG, BB)
+# Task: Set text label colors - Using constants, define 8-bit values for RGB display: 0xRRGGBB or (RR, GG, BB). 
 # Your code here:
-CONST_TEXT_COLOR_WHITE = const(0xFFFFFF)
-CONST_TEXT_COLOR_RED = const(0xFF0000)
-CONST_TEXT_COLOR_GREEN = const(0x00FF00)
-CONST_TEXT_COLOR_BLUE = const(0x0000FF)
+CONST_TEXT_COLOR_WHITE =    # Your code here
+CONST_TEXT_COLOR_RED =      # Your code here
+CONST_TEXT_COLOR_GREEN =    # Your code here
+CONST_TEXT_COLOR_BLUE =     # Your code here
 # Add any other colors you like
 
 # Set font and text labels
@@ -213,7 +228,7 @@ def map_8bit_to_10bit_clamped(value_8bit):
 def gesture_wav():
     # Task: Read the gesture from the APDS sensor
     # Documentation here: https://docs.circuitpython.org/projects/apds9960
-    gesture = # Your code here:
+    gesture =    # Your code here:
 
     # Save the initial state of last_gesture to avoid spamming the terminal
     last_gesture = NO_GESTURE   
@@ -255,7 +270,8 @@ def prox_theremin():
     prox = apds.proximity # 8-bit value returns 0-255
     # The DAC uses 10-bit values
     dac_input = map_8bit_to_10bit_clamped(prox)
-    if DEBUG:
+    
+   if DEBUG:
         print("8-bit val:",prox, "10-bit val: ",dac_input,"\n")
 
     str1 = (f"Prox sensor reading: {prox} \n")
@@ -279,6 +295,7 @@ def color_detect():
     apds.enable_gesture = False
     apds.enable_color = True
 
+    # Read RGB color values and Clear value from APDS9960
     red, green, blue, clear = apds.color_data
     if DEBUG:
         print("Red: ",red, "\t\t", "Green: ",green, "\t\t", "Blue: ",blue, "\t\t", "Clear: ",clear, "\n")
@@ -311,7 +328,7 @@ def color_detect():
         print("Red shifted: ",red_shifted, "\t", "Green shifted: ",green_shifted, "\t", "Blue shifted: ", blue_shifted, "\t", "Clear: ", clear)
 
     # Task: The RGB values red_shifted, green_shifted and blue_shifted need to be combined into 1 value to be written to the NeoPixels
-    neopixel_color = # Your code here:
+    neopixel_color =    # Your code here:
 
     # Match color sensors values on NeoPixels
     pixels.fill(neopixel_color)
@@ -329,7 +346,7 @@ while True:
     # State machine uses Cap Touch pad and current state to set next state
     # Task: How to determine whether Cap Touch pad has been touched?
     # Your code here:    
-    if ( )# Your code here:
+    if ( )   # Your code here:
         if DEBUG:
             print("Touched!")
         led.value = True
