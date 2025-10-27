@@ -1,13 +1,22 @@
 """
 This project will initialize the display using displayio and draw a solid black
 background, then read the BME680 data and write it to the TFT display in colors
-according to the thresholds defined (lines 64-84). It also shows on NeoPixels 
+according to the thresholds defined (see lines 72-98). It also shows on NeoPixels 
 which range each measurement is in.
 
 NeoPixel Top Left: Temperature
 NeoPixel Top Right: Humidity
 NeoPixel Bottom Left: Barometric Pressure
 NeoPixel Bottom Right: Gas
+
+Workshop attendees' tasks:
+   - Find the elevation of your location
+   - Determine appropriate thresholds for temperature, humidity, barometric pressure, and gas
+   - Define any extra text label colors you want to use
+   - Set display positions for text labels using (X,Y) coordinates
+   - Obtain the temperature, humidity, barometric pressure and gas measurements from the BME680 sensor
+   - Implement barometric pressure adjustment based on the international Standard Atmosphere
+   - Use f-strings to create text labels for LCD
 """
 
 import board
